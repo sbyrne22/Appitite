@@ -1,0 +1,30 @@
+{
+  "name": "appitite",
+  "version": "1.0.0",
+  "description": "A recipe app",
+  "main": "server.js",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "json": "^9.0.6",
+    "method-override": "^2.3.10",
+    "mongoose": "^4.13.5",
+    "morgan": "^1.9.0",
+    "pretty-error": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbyrne22/Appitite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sbyrne22/Appitite/issues"
+  },
+  "homepage": "https://github.com/sbyrne22/Appitite#readme"
+}
