@@ -8,14 +8,14 @@
     <% if (message) { %>
       <%= message %>
     <% } %>
-      <form action="/user/login" method="post">
+      <form action="/session/login" method="post">
         Username: <input name="username" /> <br />
         Password: <input name="password" /><br />
         <button type="submit">Submit</button>
       </form>
       <br>
       <h2>Register</h2>
-      <form action="/user/register" method="post">
+      <form action="/session/register" method="post">
         Username: <input name="username" /> <br />
         Password: <input name="password" /><br />
         <button type="submit">Register</button>

@@ -10,7 +10,8 @@ const Recipe = require('../models/recipes.js');
 
 // View all Users (users/index.ejs)
 router.get('/viewallusers', async (req, res) => {
-  const allUsers = await Photo.find();
+  const allUsers = await User.find();
+  res.render('users/index.ejs', {allUsers});
 });
 
 // show route

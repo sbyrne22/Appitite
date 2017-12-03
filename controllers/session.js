@@ -47,7 +47,15 @@ router.post('/register', async (req, res, next) => {
 
 
    try {
-     const user = await User.create(userDbEntry);
+     const users = await User.find({username: req.body.username});
+     if (users.length == 0) {
+    await User.create(req.body);
+    res.redirect('/');
+  } else {
+    // req.session.message = "'Username taken'";
+    res.send('Username taken');
+  }
+    //  const user = await User.create(userDbEntry);
      console.log(user);
      req.session.username = user.username;
      req.session.logged = true;

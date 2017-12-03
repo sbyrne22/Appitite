@@ -37,7 +37,7 @@ app.use(session({
 app.use(methodOverride('_method'));
 app.use('/recipes', recipesController);
 app.use('/session', sessionsController);
-app.use('/user', usersController);
+app.use('/profile', usersController);
 
 // root route
 app.get('/', (req, res) => res.redirect('/recipes'));
