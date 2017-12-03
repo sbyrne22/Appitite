@@ -10,7 +10,7 @@ require('pretty-error').start();
 
 
 // connect to database
-const mongoURI = 'mongodb://localhost:27017/photo_comments';
+const mongoURI = 'mongodb://localhost:27017/appitite';
 mongoose.connect(mongoURI, { useMongoClient: true});
 mongoose.Promise = global.Promise;
 
@@ -21,7 +21,7 @@ db.on('connected', () => console.log('Mongo running: ', mongoURI));
 db.on('disconnected', () => console.log('mongo disconnected'));
 
 // controllers
-// const usersController = require('./controllers/users.js');
+const usersController = require('./controllers/users.js');
 const recipesController = require('./controllers/recipes.js');
 const sessionsController = require('./controllers/session.js');
 
@@ -35,16 +35,16 @@ app.use(session({
   saveUninitialized: false
 }));
 app.use(methodOverride('_method'));
-// app.use('/users', usersController);
-// app.use('/recipes', recipesController);
-app.use('/user', sessionsController);
+app.use('/recipes', recipesController);
+app.use('/session', sessionsController);
+app.use('/user', usersController);
 
 // root route
-app.get('/', (req, res) => res.redirect('/users/login'));
+app.get('/', (req, res) => res.redirect('/recipes'));
 
 // :ear
 app.listen(PORT, () => {
   console.log('===========================');
-  console.log('Photo app on port: ', PORT);
+  console.log('Appitite app on port: ', PORT);
   console.log('===========================');
 });

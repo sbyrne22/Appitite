@@ -14,6 +14,7 @@ router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({username: req.body.username});
     if (bcrypt.compareSync(req.body.password, user.password)) {
+      req.session.message = '';
       req.session.username = req.body.username;
       req.session.logged = true;
       console.log(req.session);
@@ -21,21 +22,24 @@ router.post('/login', async (req, res) => {
     } else {
       console.log('Bad Password');
       req.session.message = "Username or password are incorrect";
-      res.redirect('/user/login');
+      res.redirect('/session/login');
     }
   } catch(err) {
     console.log('Login Error: ', err);
     req.session.message = "Username or password are incorrect";
-    res.redirect('/user/login');
+    res.redirect('/session/login');
   }
 });
 
 router.post('/register', async (req, res, next) => {
+
+  // Create Hash Password
   const password = req.body.password;
   const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
-
   const username = req.body.username;
+
+  // Create an object for our db entry
   const userDbEntry = {};
   userDbEntry.username = username;
   userDbEntry.password = passwordHash;
@@ -49,6 +53,7 @@ router.post('/register', async (req, res, next) => {
      req.session.logged = true;
      res.redirect('/');
    } catch(err) {
+     res.send('Failed to create user')
      console.log('Register Error: ', err);
    }
 });
@@ -70,7 +75,7 @@ router.get('/logout', (req, res) => {
 // Update
 router.get('/update', (req, res) => {
   req.session.anyProperty = "something";
-  req.session.username = "Cheese";
+  // req.session.username = "Cheese";
   console.log(req.session);
 });
 
