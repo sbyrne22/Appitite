@@ -6,14 +6,14 @@
   </head>
   <body>
     <% for (let User of allUsers) { %>
-                
-        <a href="/users/<%= User._id %>"><h2><%= User.username %></h2></a>
 
-        <form class="deleteForm" action="/users/<%= User._id %>?_method=DELETE" method="POST">
+        <a href="/profile/<%= User._id %>"><h2><%= User.username %></h2></a>
+
+        <form class="deleteForm" action="/profile/<%= User._id %>?_method=DELETE" method="POST">
           <input type="submit" value="Delete Product">
         </form>
 
-        <button class="editButton"><a href="/users/<%=User._id; %>/edit">Edit</a></button>
+        <button class="editButton"><a href="/profile/<%=User._id; %>/edit">Edit</a></button>
 
       <% } %>
   </body>

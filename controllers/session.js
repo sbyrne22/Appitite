@@ -14,7 +14,7 @@ router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({username: req.body.username});
     if (bcrypt.compareSync(req.body.password, user.password)) {
-      req.session.message = '';
+      // req.session.message = '';
       req.session.username = req.body.username;
       req.session.logged = true;
       console.log(req.session);
@@ -30,6 +30,7 @@ router.post('/login', async (req, res) => {
     res.redirect('/session/login');
   }
 });
+
 
 router.post('/register', async (req, res, next) => {
 
@@ -49,26 +50,52 @@ router.post('/register', async (req, res, next) => {
    try {
      const users = await User.find({username: req.body.username});
      if (users.length == 0) {
-    await User.create(req.body);
+    // await User.create(req.body);
+    // req.session.username = User.username;
+    // req.session.logged = true;
+    const user = await User.create(userDbEntry);
+    console.log(user);
+    req.session.username = user.username;
+    req.session.logged = true;
     res.redirect('/');
+
   } else {
     // req.session.message = "'Username taken'";
     res.send('Username taken');
   }
     //  const user = await User.create(userDbEntry);
      console.log(user);
-     req.session.username = user.username;
-     req.session.logged = true;
-     res.redirect('/');
+    //  req.session.username = user.username;
+    //  req.session.logged = true;
+    //  res.redirect('/');
    } catch(err) {
      res.send('Failed to create user')
      console.log('Register Error: ', err);
    }
 });
 
-router.get('/', (req, res) => {
-  // we need to render the login view.
-});
+// router.post('/register', async (req, res, next) => {
+//   const password = req.body.password;
+//   const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+//
+//
+//   const username = req.body.username;
+//   const userDbEntry = {};
+//   userDbEntry.username = username;
+//   userDbEntry.password = passwordHash;
+//   console.log(userDbEntry);
+//
+//
+//    try {
+//      const user = await User.create(userDbEntry);
+//      console.log(user);
+//      req.session.username = user.username;
+//      req.session.logged = true;
+//      res.redirect('/');
+//    } catch(err) {
+//      console.log('Register Error: ', err);
+//    }
+// });
 
 router.post('/', (req, res) => {
   // After posting the form to this route, we should analyze the session variables

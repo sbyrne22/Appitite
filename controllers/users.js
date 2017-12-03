@@ -30,5 +30,12 @@ router.get('/:id', async (req, res) => {
   };
 });
 
+// Delete
+router.delete('/:id', async (req, res) => {
+  const deleteUser = await User.findByIdAndRemove(req.params.id);
+  // await Comments.remove({ photo: deletePhoto._id });
+  res.redirect('/');
+});
+
 
 module.exports = router;
