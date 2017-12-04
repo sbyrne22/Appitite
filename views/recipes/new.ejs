@@ -6,5 +6,17 @@
   </head>
   <body>
     Recipe New
+
+    <h1>Add a Recipe</h1>
+ <form action='/recipes/new' method='post'>
+   <input type="text" name="title" placeholder="Title"/>
+   <input type="text" name="instructions" placeholder="Instructions"/>
+   <input type="text" name="imgUrl" placeholder="Image URL"/>
+   <input type="text" name="categories" placeholder="Categories"/>
+
+   <button type="submit">ADD Recipe</button>
+ </form>
+
+ <button><a href='/recipes'>Nevermind!</a></button>
   </body>
 </html>

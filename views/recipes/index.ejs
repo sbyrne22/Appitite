@@ -13,5 +13,13 @@
     Recipe index
     <a href="/session/login">Login</a>
 
+    <% for (let Recipe of allRecipes) { %>
+
+              <li>
+                <a href="/recipe/<%= Recipe._id %>"><%= Recipe.title %></a>
+              </li>
+
+      <% } %>
+
   </body>
 </html>
