@@ -5,12 +5,12 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const app      = express();
 const methodOverride = require('method-override');
-const PORT     = 3000;
+const PORT     = process.env.PORT || 3000;
 require('pretty-error').start();
 
-
+// process.env.MONGODB_URI
 // connect to database
-const mongoURI = 'mongodb://localhost:27017/appitite';
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/appitite';
 mongoose.connect(mongoURI, { useMongoClient: true});
 mongoose.Promise = global.Promise;
 
