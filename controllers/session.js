@@ -10,6 +10,7 @@ router.get('/login', (req, res) => {
 
 });
 
+// Login
 router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({username: req.body.username});
@@ -31,13 +32,12 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
+// Register
 router.post('/register', async (req, res, next) => {
 
   // Create Hash Password
   const password = req.body.password;
   const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-
   const username = req.body.username;
 
   // Create an object for our db entry
@@ -50,9 +50,6 @@ router.post('/register', async (req, res, next) => {
    try {
      const users = await User.find({username: req.body.username});
      if (users.length == 0) {
-    // await User.create(req.body);
-    // req.session.username = User.username;
-    // req.session.logged = true;
     const user = await User.create(userDbEntry);
     console.log(user);
     req.session.username = user.username;
@@ -63,39 +60,12 @@ router.post('/register', async (req, res, next) => {
     // req.session.message = "'Username taken'";
     res.send('Username taken');
   }
-    //  const user = await User.create(userDbEntry);
      console.log(user);
-    //  req.session.username = user.username;
-    //  req.session.logged = true;
-    //  res.redirect('/');
    } catch(err) {
      res.send('Failed to create user')
      console.log('Register Error: ', err);
    }
 });
-
-// router.post('/register', async (req, res, next) => {
-//   const password = req.body.password;
-//   const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-//
-//
-//   const username = req.body.username;
-//   const userDbEntry = {};
-//   userDbEntry.username = username;
-//   userDbEntry.password = passwordHash;
-//   console.log(userDbEntry);
-//
-//
-//    try {
-//      const user = await User.create(userDbEntry);
-//      console.log(user);
-//      req.session.username = user.username;
-//      req.session.logged = true;
-//      res.redirect('/');
-//    } catch(err) {
-//      console.log('Register Error: ', err);
-//    }
-// });
 
 router.post('/', (req, res) => {
   // After posting the form to this route, we should analyze the session variables

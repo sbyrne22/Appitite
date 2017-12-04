@@ -8,15 +8,15 @@ const Recipe = require('../models/recipes.js');
 // index route
 router.get('/', async (req, res) => {
   const allrecipes = await Recipe.find();
-
-  if (req.session.logged) {
-    res.render('recipes/index.ejs', {
-      recipe: allrecipes,
-      username: req.session.username
-    });
-  } else {
-    res.redirect('/session/login');
-  };
+  res.render('recipes/index.ejs');
+  // if (req.session.logged) {
+  //   res.render('recipes/index.ejs', {
+  //     recipe: allrecipes,
+  //     username: req.session.username
+  //   });
+  // } else {
+  //   res.redirect('/session/login');
+  // };
 });
 
 // show route
@@ -31,7 +31,11 @@ router.get('/:id', async (req, res) => {
 });
 
 // create route
-router.post('/', async (req, res) => {
+router.get('/new', async (req, res) => {
+  res.render('recipes/new.ejs');
+});
+
+router.post('/new', async (req, res) => {
   try {
     const createdRecipe = await Recipe.create(req.body);
     res.redirect('/');
