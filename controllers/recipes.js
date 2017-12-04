@@ -7,8 +7,9 @@ const Recipe = require('../models/recipes.js');
 
 // index route
 router.get('/', async (req, res) => {
+  const username = req.body.username;
   const allrecipes = await Recipe.find();
-  res.render('recipes/index.ejs');
+  res.render('recipes/index.ejs', {username, allrecipes});
   // if (req.session.logged) {
   //   res.render('recipes/index.ejs', {
   //     recipe: allrecipes,
