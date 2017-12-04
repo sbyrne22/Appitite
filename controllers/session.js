@@ -19,7 +19,7 @@ router.post('/login', async (req, res) => {
       req.session.username = req.body.username;
       req.session.logged = true;
       console.log(req.session);
-      res.redirect('/');
+      res.redirect('/profile/' + user.id);
     } else {
       console.log('Bad Password');
       req.session.message = "Username or password are incorrect";
@@ -54,7 +54,7 @@ router.post('/register', async (req, res, next) => {
     console.log(user);
     req.session.username = user.username;
     req.session.logged = true;
-    res.redirect('/');
+    res.redirect('/profile/' + user.id);
 
   } else {
     // req.session.message = "'Username taken'";
