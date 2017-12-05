@@ -24,6 +24,7 @@ router.get('/new', async (req, res) => {
   res.render('recipes/new.ejs');
 });
 
+// create route
 router.post('/new', async (req, res) => {
   try {
     const newRecipe = await Recipe.create(req.body);
@@ -38,12 +39,29 @@ router.get('/:id', async (req, res) => {
   const oneRecipe = await Recipe.findById(req.params.id);
   // const user = await Comment.find({ photo: onePhoto._id });
 
-  res.render('recipes/show.ejs', {
-    oneRecipe: oneRecipe
- });
+  res.render('recipes/show.ejs', {oneRecipe});
 });
 
-// create route
+
+// Update
+router.get('/:id/edit', async (req, res) => {
+  const editRecipe = await Recipe.findById(req.params.id);
+  res.render('recipes/edit.ejs', {Recipe: editRecipe});
+});
+
+router.put('/:id', async (req, res) => {
+    const updateRecipe = await Recipe.findByIdAndUpdate(req.params.id, req.body);
+    res.redirect('/recipes/' + updateRecipe.id);
+});
+
+// Delete
+router.delete('/:id', async (req, res) => {
+  const deleteRecipe = await Recipe.findByIdAndRemove(req.params.id);
+  // await Comments.remove({ photo: deletePhoto._id });
+  res.redirect('/');
+});
+
+
 
 
 module.exports = router;
