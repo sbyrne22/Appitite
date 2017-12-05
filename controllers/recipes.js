@@ -21,14 +21,18 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/new', async (req, res) => {
-  res.render('recipes/new.ejs');
+  const oneUser = req.session.id;
+  const allRecipes = await Recipe.find().populate('user');
+  console.log("User data ", req.session.id);
+  res.render('recipes/new.ejs', {oneUser: oneUser});
 });
 
 // create route
 router.post('/new', async (req, res) => {
   try {
     const newRecipe = await Recipe.create(req.body);
-    res.redirect('/');
+    console.log('Recipe.user', Recipe.user);
+    res.redirect('back');
   } catch (err) {
     res.send(err.message);
   }
