@@ -7,7 +7,7 @@ const Recipe = require('../models/recipes.js');
 
 // index route
 router.get('/', async (req, res) => {
-  const username = req.body.username;
+  const username = req.session.username;
   const allRecipes = await Recipe.find();
   res.render('recipes/index.ejs', {username, allRecipes});
   // if (req.session.logged) {
@@ -18,13 +18,6 @@ router.get('/', async (req, res) => {
   // } else {
   //   res.redirect('/session/login');
   // };
-});
-
-router.get('/new', async (req, res) => {
-  const oneUser = req.session.id;
-  const allRecipes = await Recipe.find().populate('user');
-  console.log("User data ", req.session.id);
-  res.render('recipes/new.ejs', {oneUser: oneUser});
 });
 
 // create route
@@ -41,9 +34,12 @@ router.post('/new', async (req, res) => {
 // show route
 router.get('/:id', async (req, res) => {
   const oneRecipe = await Recipe.findById(req.params.id);
+  const recipeInst = oneRecipe.instructions.split('Step');
+  recipeInst.shift();
+  console.log('RecipeInst', recipeInst);
   // const user = await Comment.find({ photo: onePhoto._id });
 
-  res.render('recipes/show.ejs', {oneRecipe});
+  res.render('recipes/show.ejs', {oneRecipe, recipeInst});
 });
 
 

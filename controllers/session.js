@@ -67,10 +67,7 @@ router.post('/register', async (req, res, next) => {
    }
 });
 
-router.post('/', (req, res) => {
-  // After posting the form to this route, we should analyze the session variables
-});
-
+// Logout
 router.get('/logout', (req, res) => {
   // here we destroy the session
   req.session.destroy();

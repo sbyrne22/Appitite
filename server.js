@@ -29,6 +29,7 @@ const sessionsController = require('./controllers/session.js');
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 app.use(morgan('dev'));
+app.use(express.static('public'));
 app.use(session({
   secret: 'randomString',
   resave: false,

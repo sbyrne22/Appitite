@@ -5,17 +5,20 @@
     <title></title>
   </head>
   <body>
+    <a href="/recipes">Back to Recipes</a>
     Recipe Show
     <a href="/recipes/<%= oneRecipe._id %>/edit">Edit</a>
     <ul>
       <li><%= oneRecipe.title %></li>
-      <li><%= oneRecipe.instructions %></li>
+      Instructions
+      <% for (let recipe of recipeInst) { %>
+        <li><%= recipe %></li>
+      <% } %>
+
       <li><img src="<%= oneRecipe.imgUrl %>" alt="Recipe Image"></li>
       <li><%= oneRecipe.categories %></li>
     </ul>
 
-    <form class="deleteForm" action="/recipes/<%= oneRecipe._id %>?_method=DELETE" method="POST">
-      <input type="submit" value="Delete Recipe">
-    </form>
+
   </body>
 </html>

@@ -5,20 +5,32 @@
     <title></title>
   </head>
   <body>
+
     <h3><%= oneUser.username %></h3>
-    
+    <a href="/Recipes">Find new Recipes</a>
+
 
     <h1>Add a Recipe</h1>
- <form action='/recipes/new' method='post'>
-   <input type="text" name="title" placeholder="Title"/>
-   <input type="text" name="instructions" placeholder="Instructions"/>
-   <input type="text" name="imgUrl" placeholder="Image URL"/>
-   <input type="text" name="categories" placeholder="Categories"/>
-   <input type="hidden" name="user" value="<%= oneUser._id %>">
+   <form action='/recipes/new' method='post'>
+     <input type="text" name="title" placeholder="Title"/>
+     <textarea name="instructions" rows="8" cols="80" placeholder="Instructions">Step 1:Step 2:
+     </textarea>
+     <input type="text" name="imgUrl" placeholder="Image URL"/>
+     <input type="text" name="categories" placeholder="Categories"/>
+     <input type="hidden" name="user" value="<%= oneUser._id %>">
 
-   <button type="submit">ADD Recipe</button>
- </form>
+     <button type="submit">ADD Recipe</button>
+   </form>
 
- <button><a href='/recipes'>Nevermind!</a></button>
-  </body>
+   <button><a href='/recipes'>Nevermind!</a></button>
+
+   <% for (let Recipe of recipes) { %>
+     <a href="/recipes/<%= Recipe._id %>"><%= Recipe.title %></a>
+      <img src="<%= Recipe.imgUrl %>" alt="<%= Recipe.title %>">
+
+      <form class="deleteForm" action="/recipes/<%= Recipe._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete Recipe">
+      </form>
+    <% } %>
+    </body>
 </html>
