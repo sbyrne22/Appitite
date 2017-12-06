@@ -9,32 +9,38 @@
       <% include ../partials/header.ejs %>
     </header>
 
+    <div class="container">
+      <h3><%= oneUser[0].username %></h3>
 
-    <h3><%= oneUser.username %></h3>
-    <a href="/Recipes">Find new Recipes</a>
+
+      <div class="addRecModel">
+        <h1>Add a Recipe</h1>
+       <form action='/recipes/new' method='post'>
+         <input type="text" name="title" placeholder="Title"/><br>
+          <h5>Instructions: Please add more steps if needed (ex: Step #:)</h5>
+         <textarea name="instructions" rows="8" cols="80" placeholder="Instructions">
+Step 1:
+Step 2:
+         </textarea><br>
+         <input type="text" name="imgUrl" placeholder="Image URL"/>
+         <input type="text" name="categories" placeholder="Categories"/>
+         <input type="hidden" name="user" value="<%= oneUser._id %>">
+
+         <button type="submit">ADD Recipe</button>
+       </form>
+
+       <button><a href='/recipes'>Nevermind!</a></button>
+      </div>
 
 
-    <h1>Add a Recipe</h1>
-   <form action='/recipes/new' method='post'>
-     <input type="text" name="title" placeholder="Title"/>
-     <textarea name="instructions" rows="8" cols="80" placeholder="Instructions">Step 1:Step 2:
-     </textarea>
-     <input type="text" name="imgUrl" placeholder="Image URL"/>
-     <input type="text" name="categories" placeholder="Categories"/>
-     <input type="hidden" name="user" value="<%= oneUser._id %>">
+     <% for (let Recipe of recipes) { %>
+       <a href="/recipes/<%= Recipe._id %>"><%= Recipe.title %></a>
+        <img src="<%= Recipe.imgUrl %>" alt="<%= Recipe.title %>">
 
-     <button type="submit">ADD Recipe</button>
-   </form>
-
-   <button><a href='/recipes'>Nevermind!</a></button>
-
-   <% for (let Recipe of recipes) { %>
-     <a href="/recipes/<%= Recipe._id %>"><%= Recipe.title %></a>
-      <img src="<%= Recipe.imgUrl %>" alt="<%= Recipe.title %>">
-
-      <form class="deleteForm" action="/recipes/<%= Recipe._id %>?_method=DELETE" method="POST">
-        <input type="submit" value="Delete Recipe">
-      </form>
-    <% } %>
-    </body>
+        <form class="deleteForm" action="/recipes/<%= Recipe._id %>?_method=DELETE" method="POST">
+          <input type="submit" value="Delete Recipe">
+        </form>
+      <% } %>
+    </div>
+  </body>
 </html>

@@ -1,6 +1,20 @@
-<h1>Appitite</h1>
-<% if (username) { %>
-  Bon Appitite, <%= username %>.<%= oneUser._id %><a href="/profile/<%= oneUser[0]._id %>">View Profile</a><a href="/session/logout">Log out</a>
-<% } else { %>
-  <a href="/session/login">Login</a>
-<% } %>
+<div class="heading">
+  <div class="logo">
+    <h1><a href="/Recipes">Appitite</a></h1><p> . Recipes . Everywhere</p><br>
+
+  </div>
+
+  <div class="loginNav">
+    <% if (username) { %>
+      Bon Appitite,<a href="/profile/<%= oneUser[0]._id %>"> <%= username %></a><br>
+
+      <a href="/session/logout">Log out</a>
+    <% } else { %>
+      <a href="/session/login">Login</a>
+    <% } %>
+  </div>
+
+</div>
+<div class="myButton">
+  <a href="/Recipes">Find new Recipes</a>
+</div>
