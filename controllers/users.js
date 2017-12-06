@@ -16,8 +16,9 @@ router.get('/viewallusers', async (req, res) => {
 
 // show route
 router.get('/:id', async (req, res) => {
-  const oneUser = await User.findById(req.params.id);
-  const recipes = await Recipe.find({ user: oneUser._id });
+  const oneUser = await User.find({username: req.session.username});
+  const recipes = await Recipe.find({ user: oneUser[0]._id });
+  console.log('oneUser', oneUser[0]._id);
 
   if (req.session.logged) {
     res.render('users/show.ejs', {

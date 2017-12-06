@@ -3,9 +3,13 @@ const bcrypt = require('bcrypt');
 const router = express.Router();
 const User   = require('../models/users.js');
 
-router.get('/login', (req, res) => {
+router.get('/login', async (req, res) => {
+  const oneUser = await User.find({username: req.session.username});
+  console.log('oneUser', oneUser);
   res.render('users/new.ejs', {
-    message: req.session.message
+    message: req.session.message,
+    username: req.session.username,
+    oneUser
   });
 
 });

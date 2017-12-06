@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <% include ../partials/head.ejs %>
     <title></title>
   </head>
   <body>
+    <header>
+      <% include ../partials/header.ejs %>
+    </header>
+
 
     <h3><%= oneUser.username %></h3>
     <a href="/Recipes">Find new Recipes</a>

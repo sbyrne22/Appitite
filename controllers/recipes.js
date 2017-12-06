@@ -5,11 +5,14 @@ const router  = express.Router();
 const User = require('../models/users.js');
 const Recipe = require('../models/recipes.js');
 
+
+
 // index route
 router.get('/', async (req, res) => {
+  const oneUser = await User.find({username: req.session.username});
   const username = req.session.username;
   const allRecipes = await Recipe.find();
-  res.render('recipes/index.ejs', {username, allRecipes});
+  res.render('recipes/index.ejs', {username, oneUser, allRecipes});
   // if (req.session.logged) {
   //   res.render('recipes/index.ejs', {
   //     recipe: allrecipes,
@@ -33,20 +36,24 @@ router.post('/new', async (req, res) => {
 
 // show route
 router.get('/:id', async (req, res) => {
+  const oneUser = await User.find({username: req.session.username});
+  const username = req.session.username;
   const oneRecipe = await Recipe.findById(req.params.id);
   const recipeInst = oneRecipe.instructions.split('Step');
   recipeInst.shift();
   console.log('RecipeInst', recipeInst);
   // const user = await Comment.find({ photo: onePhoto._id });
 
-  res.render('recipes/show.ejs', {oneRecipe, recipeInst});
+  res.render('recipes/show.ejs', {oneRecipe, recipeInst, username, oneUser});
 });
 
 
 // Update
 router.get('/:id/edit', async (req, res) => {
+  const oneUser = await User.find({username: req.session.username});
+  const username = req.session.username;
   const editRecipe = await Recipe.findById(req.params.id);
-  res.render('recipes/edit.ejs', {Recipe: editRecipe});
+  res.render('recipes/edit.ejs', {Recipe: editRecipe, username, oneUser});
 });
 
 router.put('/:id', async (req, res) => {

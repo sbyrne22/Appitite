@@ -1,0 +1,6 @@
+<h1>Appitite</h1>
+<% if (username) { %>
+  Bon Appitite, <%= username %>.<%= oneUser._id %><a href="/profile/<%= oneUser[0]._id %>">View Profile</a><a href="/session/logout">Log out</a>
+<% } else { %>
+  <a href="/session/login">Login</a>
+<% } %>

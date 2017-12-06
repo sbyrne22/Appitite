@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <% include ../partials/head.ejs %>
     <title></title>
   </head>
   <body>
     <header>
-    <% if (username) { %>
-      Welcome, <%= username %>. <a href="/session/logout">Log out</a>
-    <% } %>
-  </header>
+      <% include ../partials/header.ejs %>
+    </header>
     Recipe index
-    <a href="/session/login">Login</a>
+
 
     <% for (let Recipe of allRecipes) { %>
 
