@@ -11,7 +11,12 @@ a {
 a:hover {
   /*color: green;*/
 }
-
+.h1IBlock {
+  display: inline-block;
+}
+h5 {
+  margin: 2px;
+}
 /*Header*/
 .heading {
   background: #DF6A6A;
@@ -74,5 +79,43 @@ header a:hover {
 }
 .addRecModel {
   /*text-align: center;*/
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
+  border-radius: 10px 0 10px 0;
+  max-width: 500px;
+  padding: 10px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  background: #DEDEDE;
+}
+.neverMind {
+  border:0px ;
+  border-radius: 2px;
+  background: #D24444;
+  height: 20px;
+}
+.neverMind a {
+  color: #FFFFFF;
+}
+.go {
+  border:0px ;
+  border-radius: 2px;
+  background: #7AD244;
+  color: #FFFFFF;
+}
+.addRecModel h1 {
+  color: #DF6A6A;
+  margin: 10px;
+}
+.input {
+  border:0px ;
+  border-radius: 2px;
+}
+.wideInput {
+  width: 100%;
+}
+.flexRSB {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

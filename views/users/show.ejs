@@ -10,35 +10,38 @@
     </header>
 
     <div class="container">
-      <h3><%= oneUser[0].username %></h3>
+      <h3><%= oneUser[0].username %>'s Profile</h3>
 
 
       <div class="addRecModel">
-        <h1>Add a Recipe</h1>
+        <div class="flexRSB">
+          <h1 class="h1IBlock">Add a Recipe</h1>
+          <button class="neverMind"><a href='/profile/<%= oneUser[0]._id %>'>Nevermind!</a></button>
+        </div>
        <form action='/recipes/new' method='post'>
-         <input type="text" name="title" placeholder="Title"/><br>
+         <input class="input" type="text" name="title" placeholder="Title"/><br>
+         <h5>Ingrediants</h5>
+         <input class="input wideInput" type="text" name="ingrediants" placeholder="Ingrediant 1, Ingrediant 2... ect"/>
           <h5>Instructions: Please add more steps if needed (ex: Step #:)</h5>
-         <textarea name="instructions" rows="8" cols="80" placeholder="Instructions">
+         <textarea class="input" name="instructions" rows="8" cols="80" placeholder="Instructions">
 Step 1:
 Step 2:
          </textarea><br>
-         <input type="text" name="imgUrl" placeholder="Image URL"/>
-         <input type="text" name="categories" placeholder="Categories"/>
-         <input type="hidden" name="user" value="<%= oneUser._id %>">
+         <input class="input" type="text" name="imgUrl" placeholder="Image URL"/>
 
-         <button type="submit">ADD Recipe</button>
+         <input class="input" type="hidden" name="user" value="<%= oneUser._id %>">
+
+         <button class="go" type="submit">ADD Recipe</button>
        </form>
-
-       <button><a href='/recipes'>Nevermind!</a></button>
       </div>
 
-
+      <h4>You're Recipes</h4>
      <% for (let Recipe of recipes) { %>
        <a href="/recipes/<%= Recipe._id %>"><%= Recipe.title %></a>
         <img src="<%= Recipe.imgUrl %>" alt="<%= Recipe.title %>">
 
         <form class="deleteForm" action="/recipes/<%= Recipe._id %>?_method=DELETE" method="POST">
-          <input type="submit" value="Delete Recipe">
+          <input type="submit" value="Remove">
         </form>
       <% } %>
     </div>
