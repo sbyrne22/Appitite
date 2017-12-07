@@ -10,18 +10,32 @@
     </header>
 
     Recipe Edit
+    <div id="addRecModel" class="recDataForm">
+      <div class="flexRSB">
+        <h1 class="h1IBlock">Edit <%=Recipe.title%></h1><br>
+        <button class="neverMind"><a href='/profile/<%= oneUser[0]._id %>'>Nevermind!</a></button>
+      </div>
+     <form action="/recipes/<%=Recipe._id%>?_method=PUT" method="POST">
+       <input class="input" type="text" name="title" value="<%=Recipe.title%>"/><br>
+       <h5>Ingrediants</h5>
+       <input class="input wideInput" type="text" name="ingrediants" value="<%=Recipe.ingrediants%>"/>
+        <h5>Instructions: Please add more steps if needed (ex: Step #:)</h5>
+       <textarea class="input" name="instructions" rows="8" cols="80" value="<%=Recipe.instructions%>">
+    <% for (let i = 0; i < Recipe.instructions.length; i++) { %>
+    Step <%=i + 1%>: <%= Recipe.instructions[i] %>
+    <% } %>
+       </textarea><br>
+       <input class="input" type="text" name="imgUrl" value="<%=Recipe.imgUrl%>"/>
 
-      <h1>Edit a Recipe</h1>
-   <form action="/recipes/<%=Recipe._id%>?_method=PUT" method="POST">
-     <input type="text" name="title" value="<%=Recipe.title%>"/>
-     <input type="text" name="instructions" value="<%=Recipe.instructions%>"/>
-     <input type="text" name="imgUrl" value="<%=Recipe.imgUrl%>"/>
-     <input type="text" name="categories" value="<%=Recipe.categories%>"/>
+       <button class="go" type="submit">Update Recipe</button>
+     </form>
+    </div>
 
-     <button type="submit">Edit Recipe</button>
-   </form>
 
-   <button><a href='/recipes/Recipe._id'>Nevermind!</a></button>
 
-  </body>
+
+
+
+
+   </body>
 </html>

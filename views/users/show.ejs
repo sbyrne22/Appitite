@@ -13,7 +13,7 @@
       <h3><%= oneUser[0].username %>'s Profile</h3>
 
 
-      <div class="addRecModel">
+      <div id="addRecModel" class="recDataForm">
         <div class="flexRSB">
           <h1 class="h1IBlock">Add a Recipe</h1>
           <button class="neverMind"><a href='/profile/<%= oneUser[0]._id %>'>Nevermind!</a></button>
@@ -35,15 +35,28 @@ Step 2:
        </form>
       </div>
 
-      <h4>You're Recipes</h4>
-     <% for (let Recipe of recipes) { %>
-       <a href="/recipes/<%= Recipe._id %>"><%= Recipe.title %></a>
-        <img src="<%= Recipe.imgUrl %>" alt="<%= Recipe.title %>">
 
-        <form class="deleteForm" action="/recipes/<%= Recipe._id %>?_method=DELETE" method="POST">
-          <input type="submit" value="Remove">
-        </form>
-      <% } %>
+
+      
+
+
+
+
+      <h4 class="headlineMedium">You're Recipes</h4>
+      <hr class="line">
+      <div class="flexRW">
+        <% for (let Recipe of recipes) { %>
+          <div class="recipeBox">
+            <a href="/recipes/<%= Recipe._id %>"><%= Recipe.title %></a>
+             <img src="<%= Recipe.imgUrl %>" alt="<%= Recipe.title %>"><br>
+
+             <button class="edit" type="button" ><a href="/recipes/<%= Recipe._id %>/edit">Edit</a></button>
+             <form class="deleteForm" action="/recipes/<%= Recipe._id %>?_method=DELETE" method="POST">
+               <input class="removeRec" type="submit" value="Remove">
+             </form>
+          </div>
+         <% } %>
+      </div>
     </div>
   </body>
 </html>
