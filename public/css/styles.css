@@ -17,6 +17,7 @@ a:hover {
 h5 {
   margin: 2px;
 }
+
 /*Header*/
 .heading {
   background: #DF6A6A;
@@ -78,8 +79,9 @@ header a:hover {
   margin: 0 auto;
 }
 .headlineMedium {
-  margin: 2px;
+  margin: 0px;
   color: #DF6A6A;
+  display: inline-block;
 }
 .line {
   width: 100%;
@@ -101,13 +103,6 @@ header a:hover {
   color: #DF6A6A;
   margin: 0px 10px 10px 0px;
 }
-.create {
-
-
-}
-.edit {
-
-}
 .neverMind {
   border:0px ;
   border-radius: 20px 2px 2px 2px;
@@ -115,6 +110,7 @@ header a:hover {
   background: #D24444;
   height: 20px;
   /*margin-top: 10px;*/
+  cursor: pointer;
 }
 .neverMind a {
   color: #FFFFFF;
@@ -124,6 +120,7 @@ header a:hover {
   border-radius: 2px 20px 2px 2px;
   background: #D24444;
   color: #FFFFFF;
+  cursor: pointer;
 }
 .go {
   border:0px ;
@@ -131,14 +128,27 @@ header a:hover {
   /*border-radius: 2px;*/
   background: #7AD244;
   color: #FFFFFF;
+  cursor: pointer;
 }
 .edit {
   border:0px ;
   border-radius: 2px 15px 2px 2px;
   background: #00FFFB;
+  cursor: pointer;
 }
 .edit a {
   color: #FFFFFF;
+}
+.addAButton {
+  border:0px ;
+  background: #DF6A6A;
+  border-radius: 3px 3px 0px 0px;
+  color: #FFFFFF;
+}
+.addAButton:hover {
+  background: #FFFFFF;
+  color: #DF6A6A;
+  cursor: pointer;
 }
 
 .input {
