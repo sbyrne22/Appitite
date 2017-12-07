@@ -42,6 +42,7 @@ app.use('/profile', usersController);
 
 // root route
 app.get('/', (req, res) => res.redirect('/recipes'));
+app.get('/p', (req, res) => res.redirect('/recipes'));
 
 // :ear
 app.listen(PORT, () => {

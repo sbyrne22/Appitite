@@ -12,7 +12,7 @@
     <div class="container">
       <h3><%= oneUser[0].username %>'s Profile</h3>
 
-      <div id="addRecModel" class="modelBox addRec">
+      <div id="addRecModel" class="modelBox">
         <div class="recDataForm">
           <div class="flexRSB">
             <h1 class="h1IBlock">Add a Recipe</h1>
@@ -21,11 +21,11 @@
          <form action='/recipes/new' method='post'>
            <input class="input" type="text" name="title" placeholder="Title"/><br>
            <h5>Ingredients</h5>
-           <input class="input wideInput" type="text" name="ingredients" placeholder="Ingredient 1, Ingredient 2... ect"/>
+           <input class="input wideInput" type="text" name="ingrediants" placeholder="Ingredient 1, Ingredient 2... ect"/>
             <h5>Instructions: Please add more steps if needed (ex: Step #:)</h5>
-           <textarea class="input" name="instructions" rows="8" cols="80" placeholder="Instructions">
-  Step 1:
-  Step 2:
+           <textarea class="input" name="instructions" rows="8" cols="80">
+Step 1:
+Step 2:
            </textarea><br>
            <input class="input" type="text" name="imgUrl" placeholder="Image URL"/>
 
@@ -38,13 +38,13 @@
 
 
 
+      <% recipes.forEach((Recipe, i) => { %>
 
-      <% for (let Recipe of recipes) { %>
-        <div class="modelBox">
-          <div id="editRecModel" class="recDataForm">
+        <div id="editRecModel<%= i %>" class="modelBox editModel">
+          <div class="recDataForm">
             <div class="flexRSB">
               <h1 class="h1IBlock">Edit <%=Recipe.title%></h1><br>
-              <button class="neverMind"><a href='/profile/<%= oneUser[0]._id %>'>Nevermind!</a></button>
+              <button id="closeEditRecBut<%= i %>" class="neverMind">Nevermind</button>
             </div>
            <form action="/recipes/<%=Recipe._id%>?_method=PUT" method="POST">
              <input class="input" type="text" name="title" value="<%=Recipe.title%>"/><br>
@@ -52,8 +52,8 @@
              <input class="input wideInput" type="text" name="ingrediants" value="<%=Recipe.ingrediants%>"/>
               <h5>Instructions: Please add more steps if needed (ex: Step #:)</h5>
              <textarea class="input" name="instructions" rows="8" cols="80" value="<%=Recipe.instructions%>">
-          <% for (let i = 0; i < Recipe.instructions.length; i++) { %>
-  Step <%=i + 1%>: <%= Recipe.instructions[i] %>
+          <% for (let j = 0; j < instuctArray[i].length; j++) { %>
+   <%= instuctArray[i][j] %>
           <% } %>
              </textarea><br>
              <input class="input" type="text" name="imgUrl" value="<%=Recipe.imgUrl%>"/>
@@ -62,7 +62,7 @@
            </form>
           </div>
         </div>
-       <% } %>
+       <% }) %>
 
 
 
@@ -70,17 +70,17 @@
       <h4 class="headlineMedium">Your Recipes</h4>
       <button id="addRecButton" class="addAButton" type="button" name="button">Add a Recipe</button>
       <hr class="line">
-      <div class="flexRW">
-        <% for (let Recipe of recipes) { %>
+      <div class="flexRCW">
+        <% for (let i = 0; i < recipes.length; i++) { %>
           <div class="recipeBox">
-            <a href="/recipes/<%= Recipe._id %>"><%= Recipe.title %></a><br>
+            <a href="/recipes/<%= recipes[i]._id %>"><%= recipes[i].title %></a><br>
             <div class="imageBox">
-              <img src="<%= Recipe.imgUrl %>" alt="<%= Recipe.title %>"><br>
+              <a href="/recipes/<%= recipes[i]._id %>"><img src="<%= recipes[i].imgUrl %>" alt="<%= recipes[i].title %>"></a><br>
             </div>
 
             <div class="buttonBox">
-              <button class="edit" type="button" ><a href="/recipes/<%= Recipe._id %>/edit">Edit</a></button>
-              <form class="deleteForm" action="/recipes/<%= Recipe._id %>?_method=DELETE" method="POST">
+              <button id="openEditRecBut<%= i %>" class="editBtn" type="button" >Edit</button>
+              <form class="deleteForm" action="/recipes/<%= recipes[i]._id %>?_method=DELETE" method="POST">
               <input class="removeRec" type="submit" value="Remove">
               </form>
             </div>

@@ -54,6 +54,9 @@ header a:hover {
 .logo a:hover {
   color:#FFFFFF
 }
+.blue {
+  color: #00FFFB;
+}
 .loginNav {
   text-align: right;
   line-height: 30px;
@@ -88,6 +91,8 @@ header a:hover {
   border: 1px solid #DF6A6A;
   margin: 0;
 }
+
+/*Models*/
 .modelBox {
   display: none;
   position: fixed;
@@ -100,6 +105,11 @@ header a:hover {
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
 }
+.registerBox {
+  display: none;
+}
+/*End Models*/
+
 .recDataForm {
   border-radius: 10px 0 10px 0;
   padding: 10px;
@@ -115,11 +125,10 @@ header a:hover {
 .neverMind {
   border:0px ;
   border-radius: 20px 2px 2px 2px;
-  /*border-radius: 2px;*/
   background: #D24444;
   height: 20px;
-  /*margin-top: 10px;*/
   cursor: pointer;
+  color: #FFFFFF;
 }
 .neverMind a {
   color: #FFFFFF;
@@ -146,7 +155,7 @@ header a:hover {
   color: #FFFFFF;
   cursor: pointer;
 }
-.edit {
+.editBtn {
   /*margin: 0px;*/
   /*width: 45px;*/
   border:0px ;
@@ -154,8 +163,6 @@ header a:hover {
   /*border-radius: 15px 2px 2px 2px;*/
   background: #00FFFB;
   cursor: pointer;
-}
-.edit a {
   color: #FFFFFF;
 }
 .addAButton {
@@ -168,6 +175,29 @@ header a:hover {
   background: #FFFFFF;
   color: #DF6A6A;
   cursor: pointer;
+}
+.newUserBtn {
+  border:0px;
+  color: #FFFFFF;
+  background: #00FFFB;
+  border-radius: 5px 0 5px 0;
+}
+.existingUserBtn {
+  border:0px;
+  color: #FFFFFF;
+
+  background: #DF6A6A;
+  border-radius: 5px 0 5px 0;
+}
+.view {
+  border:0px ;
+  width: 100%;
+  background: #DF6A6A;
+  border-radius: 0px 0px 8px 0px;
+  color: #FFFFFF;
+}
+.view a {
+  color: #FFFFFF;
 }
 
 .input {
@@ -187,13 +217,24 @@ header a:hover {
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
+  /*align-items: flex-end;*/
+}
+.flexRCW {
+  max-height: 500px;
+  /*border: 1px solid red;*/
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-y: scroll;
 }
 .recipeBox {
   text-align: center;
   margin: 10px;
   border: 1px solid #DF6A6A;
   /*max-height: 150px;*/
-  background: #DEDEDE;
+  background: #FFEDED;
+  /*background: #DEDEDE;*/
   border-radius: 10px 0 10px 0;
 }
 .recipeBox > a {
@@ -201,12 +242,34 @@ header a:hover {
 }
 .imageBox {
   /*border: 1px solid red;*/
+  border-radius: 10px 0 10px 0;
+  width: 100px;
+  height: 59px;
+  overflow: hidden;
 }
 .imageBox img {
   max-width: 100px;
   max-height: 100px;
-  border-radius: 10px;
+  /*border-radius: 10px;*/
+  /*border-radius: 10px 0 10px 0;*/
 }
 .buttonBox {
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
+}
+.welcomeBox {
+  color: #DF6A6A;
+  /*border: 1px solid red;*/
+  margin: 0 auto;
+  text-align: center;
+}
+
+/*Sign up Page*/
+.signInBox {
+  /*border: 1px solid red;*/
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.signInBox h2 {
+  color: #DF6A6A;
 }

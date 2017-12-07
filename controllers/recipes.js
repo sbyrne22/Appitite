@@ -11,8 +11,8 @@ const Recipe = require('../models/recipes.js');
 router.get('/', async (req, res) => {
   const oneUser = await User.find({username: req.session.username});
   const username = req.session.username;
-  const allRecipes = await Recipe.find();
-  res.render('recipes/index.ejs', {username, oneUser, allRecipes});
+  const recipes = await Recipe.find();
+  res.render('recipes/index.ejs', {username, oneUser, recipes});
   // if (req.session.logged) {
   //   res.render('recipes/index.ejs', {
   //     recipe: allrecipes,
@@ -39,8 +39,11 @@ router.get('/:id', async (req, res) => {
   const oneUser = await User.find({username: req.session.username});
   const username = req.session.username;
   const oneRecipe = await Recipe.findById(req.params.id);
-  const recipeInst = oneRecipe.instructions.split('Step');
-  recipeInst.shift();
+  const recipeInst = oneRecipe.instructions.split('\n');
+
+  // const recipeInst = oneRecipe.instructions.split('Step');
+  // oneRecipe.instructions.split('Step').shift();
+  // recipeInst.shift();
   console.log('RecipeInst', recipeInst);
   // const user = await Comment.find({ photo: onePhoto._id });
 
@@ -58,14 +61,14 @@ router.get('/:id/edit', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     const updateRecipe = await Recipe.findByIdAndUpdate(req.params.id, req.body);
-    res.redirect('/recipes/' + updateRecipe.id);
+    res.redirect('back');
 });
 
 // Delete
 router.delete('/:id', async (req, res) => {
   const deleteRecipe = await Recipe.findByIdAndRemove(req.params.id);
   // await Comments.remove({ photo: deletePhoto._id });
-  res.redirect('/');
+  res.redirect('back');
 });
 
 

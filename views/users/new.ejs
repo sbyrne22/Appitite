@@ -8,21 +8,35 @@
     <header>
       <% include ../partials/header.ejs %>
     </header>
-
-    <% if (message) { %>
-      <%= message %>
-    <% } %>
-      <form action="/session/login" method="post">
-        Username: <input name="username" /> <br />
-        Password: <input name="password" /><br />
-        <button type="submit">Submit</button>
-      </form>
-      <br>
-      <h2>Register</h2>
-      <form action="/session/register" method="post">
-        Username: <input name="username" /> <br />
-        Password: <input name="password" /><br />
-        <button type="submit">Register</button>
-      </form>
+    <div class="container">
+      <div class="signInBox">
+        <div id="logInBox" class="logInBox">
+          <h2>Login</h2>
+          <% if (message) { %>
+            <%= message %>
+          <% } %>
+          <form action="/session/login" method="post">
+            Username: <input class="input2" name="username" /> <br />
+            Password: <input class="input2" name="password" /><br />
+            <button class="go" type="submit">Login</button>
+          </form>
+          <br>
+          <button id="newUserBtn" class="newUserBtn">New User? Register</button>
+        </div>
+        <div id="registerBox" class="registerBox">
+          <h2>Register</h2>
+          <% if (regmessage) { %>
+            <%= regmessage %>
+          <% } %>
+          <form action="/session/register" method="post">
+            Username: <input class="input2" name="username" /> <br />
+            Password: <input class="input2" name="password" /><br />
+            <button class="go" type="submit">Register</button>
+          </form>
+          <br>
+          <button id="existUserBtn" class="existingUserBtn">Existing User? Login</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

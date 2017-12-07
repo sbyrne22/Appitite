@@ -19,11 +19,18 @@ router.get('/:id', async (req, res) => {
   const oneUser = await User.find({username: req.session.username});
   const recipes = await Recipe.find({ user: oneUser[0]._id });
   console.log('oneUser', oneUser[0]._id);
+  let instuctArray = [];
+  for (let Recipe of recipes) {
+    let instuctionSplit = Recipe.instructions.split('\n');
+    instuctArray.push(instuctionSplit);
+  }
+  console.log('instArray', instuctArray);
 
   if (req.session.logged) {
     res.render('users/show.ejs', {
       oneUser: oneUser,
       recipes: recipes,
+      instuctArray: instuctArray,
       username: req.session.username
     });
   } else {

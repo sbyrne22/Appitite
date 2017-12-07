@@ -8,8 +8,9 @@ router.get('/login', async (req, res) => {
   console.log('oneUser', oneUser);
   res.render('users/new.ejs', {
     message: req.session.message,
+    regmessage: req.session.regmessage,
     username: req.session.username,
-    oneUser
+    oneUser: oneUser
   });
 
 });
@@ -26,7 +27,7 @@ router.post('/login', async (req, res) => {
       res.redirect('/profile/' + user.id);
     } else {
       console.log('Bad Password');
-      req.session.message = "Username or password are incorrect";
+      req.session.message = "Username or password is incorrect";
       res.redirect('/session/login');
     }
   } catch(err) {
@@ -61,13 +62,13 @@ router.post('/register', async (req, res, next) => {
     res.redirect('/profile/' + user.id);
 
   } else {
-    // req.session.message = "'Username taken'";
-    res.send('Username taken');
+    req.session.regmessage = "Username Taken";
+    res.redirect('/session/login');
   }
      console.log(user);
    } catch(err) {
-     res.send('Failed to create user')
-     console.log('Register Error: ', err);
+     req.session.regmessage = "Username Taken";
+     res.redirect('/session/login');
    }
 });
 

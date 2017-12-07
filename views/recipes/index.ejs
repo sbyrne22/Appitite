@@ -8,17 +8,29 @@
     <header>
       <% include ../partials/header.ejs %>
     </header>
-    Recipe index
+    <div class="container">
+      <div class="welcomeBox">
+        <h2>Welcome to</h2>
+        <h1>App<span class="blue">i</span>tite</h1>
+        <p>Where you can save your own or view other users' recipes Anywhere . Anytime</p>
+      </div>
 
+      <h4 class="headlineMedium">All Recipes</h4>
+      <hr class="line">
+      <div class="flexRCW">
+        <% for (let i = 0; i < recipes.length; i++) { %>
+          <div class="recipeBox">
+            <a href="/recipes/<%= recipes[i]._id %>"><%= recipes[i].title %></a><br>
+            <div class="imageBox">
+              <a href="/recipes/<%= recipes[i]._id %>"><img src="<%= recipes[i].imgUrl %>" alt="<%= recipes[i].title %>"></a><br>
+            </div>
 
-    <% for (let Recipe of allRecipes) { %>
-
-              <li>
-                <a href="/recipes/<%= Recipe._id %>"><%= Recipe.title %></a>
-
-              </li>
-
-      <% } %>
-
+            <div class="buttonBox">
+              <button class="view"><a href="/recipes/<%= recipes[i]._id %>">View</a></button>
+            </div>
+          </div>
+         <% } %>
+      </div>
+    </div>
   </body>
 </html>
