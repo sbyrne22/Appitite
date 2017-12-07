@@ -88,16 +88,25 @@ header a:hover {
   border: 1px solid #DF6A6A;
   margin: 0;
 }
+.modelBox {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
 .recDataForm {
   border-radius: 10px 0 10px 0;
-
   padding: 10px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  margin: 0px auto;
+  margin-top: 100px;
   background: #DEDEDE;
   max-width: 500px;
-  /*display: none;*/
 }
 .recDataForm h1 {
   color: #DF6A6A;
@@ -115,24 +124,34 @@ header a:hover {
 .neverMind a {
   color: #FFFFFF;
 }
+.deleteForm {
+  display: inline;
+  /*width: 45px;*/
+  /*margin: 0px;
+  padding: 0px;*/
+}
 .removeRec {
   border:0px ;
-  border-radius: 2px 20px 2px 2px;
+  border-radius: 5px 0 5px 0;
+  /*border-radius: 2px 20px 2px 2px;*/
   background: #D24444;
   color: #FFFFFF;
   cursor: pointer;
+  /*margin: 0px;*/
 }
 .go {
   border:0px ;
   border-radius: 2px 20px 2px 2px;
-  /*border-radius: 2px;*/
   background: #7AD244;
   color: #FFFFFF;
   cursor: pointer;
 }
 .edit {
+  /*margin: 0px;*/
+  /*width: 45px;*/
   border:0px ;
-  border-radius: 2px 15px 2px 2px;
+  border-radius: 5px 0 5px 0;
+  /*border-radius: 15px 2px 2px 2px;*/
   background: #00FFFB;
   cursor: pointer;
 }
@@ -170,5 +189,24 @@ header a:hover {
   flex-wrap: wrap;
 }
 .recipeBox {
+  text-align: center;
   margin: 10px;
+  border: 1px solid #DF6A6A;
+  /*max-height: 150px;*/
+  background: #DEDEDE;
+  border-radius: 10px 0 10px 0;
+}
+.recipeBox > a {
+  color: #DF6A6A;
+}
+.imageBox {
+  /*border: 1px solid red;*/
+}
+.imageBox img {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 10px;
+}
+.buttonBox {
+  border: 1px solid blue;
 }

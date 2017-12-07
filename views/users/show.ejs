@@ -12,51 +12,55 @@
     <div class="container">
       <h3><%= oneUser[0].username %>'s Profile</h3>
 
+      <div id="addRecModel" class="modelBox addRec">
+        <div class="recDataForm">
+          <div class="flexRSB">
+            <h1 class="h1IBlock">Add a Recipe</h1>
+            <button id="closeAddRecBut" class="neverMind"><a href='/profile/<%= oneUser[0]._id %>'>Nevermind!</a></button>
+          </div>
+         <form action='/recipes/new' method='post'>
+           <input class="input" type="text" name="title" placeholder="Title"/><br>
+           <h5>Ingredients</h5>
+           <input class="input wideInput" type="text" name="ingredients" placeholder="Ingredient 1, Ingredient 2... ect"/>
+            <h5>Instructions: Please add more steps if needed (ex: Step #:)</h5>
+           <textarea class="input" name="instructions" rows="8" cols="80" placeholder="Instructions">
+  Step 1:
+  Step 2:
+           </textarea><br>
+           <input class="input" type="text" name="imgUrl" placeholder="Image URL"/>
 
-      <div id="addRecModel" class="recDataForm">
-        <div class="flexRSB">
-          <h1 class="h1IBlock">Add a Recipe</h1>
-          <button class="neverMind"><a href='/profile/<%= oneUser[0]._id %>'>Nevermind!</a></button>
+           <input class="input" type="hidden" name="user" value="<%= oneUser[0]._id %>">
+
+           <button class="go" type="submit">ADD Recipe</button>
+         </form>
         </div>
-       <form action='/recipes/new' method='post'>
-         <input class="input" type="text" name="title" placeholder="Title"/><br>
-         <h5>Ingredients</h5>
-         <input class="input wideInput" type="text" name="ingredients" placeholder="Ingredient 1, Ingredient 2... ect"/>
-          <h5>Instructions: Please add more steps if needed (ex: Step #:)</h5>
-         <textarea class="input" name="instructions" rows="8" cols="80" placeholder="Instructions">
-Step 1:
-Step 2:
-         </textarea><br>
-         <input class="input" type="text" name="imgUrl" placeholder="Image URL"/>
-
-         <input class="input" type="hidden" name="user" value="<%= oneUser._id %>">
-
-         <button class="go" type="submit">ADD Recipe</button>
-       </form>
       </div>
 
 
 
-      <% for (let Recipe of recipes) { %>
-        <div id="addRecModel" class="recDataForm">
-          <div class="flexRSB">
-            <h1 class="h1IBlock">Edit <%=Recipe.title%></h1><br>
-            <button class="neverMind"><a href='/profile/<%= oneUser[0]._id %>'>Nevermind!</a></button>
-          </div>
-         <form action="/recipes/<%=Recipe._id%>?_method=PUT" method="POST">
-           <input class="input" type="text" name="title" value="<%=Recipe.title%>"/><br>
-           <h5>Ingrediants</h5>
-           <input class="input wideInput" type="text" name="ingrediants" value="<%=Recipe.ingrediants%>"/>
-            <h5>Instructions: Please add more steps if needed (ex: Step #:)</h5>
-           <textarea class="input" name="instructions" rows="8" cols="80" value="<%=Recipe.instructions%>">
-        <% for (let i = 0; i < Recipe.instructions.length; i++) { %>
-Step <%=i + 1%>: <%= Recipe.instructions[i] %>
-        <% } %>
-           </textarea><br>
-           <input class="input" type="text" name="imgUrl" value="<%=Recipe.imgUrl%>"/>
 
-           <button class="go" type="submit">Update Recipe</button>
-         </form>
+      <% for (let Recipe of recipes) { %>
+        <div class="modelBox">
+          <div id="editRecModel" class="recDataForm">
+            <div class="flexRSB">
+              <h1 class="h1IBlock">Edit <%=Recipe.title%></h1><br>
+              <button class="neverMind"><a href='/profile/<%= oneUser[0]._id %>'>Nevermind!</a></button>
+            </div>
+           <form action="/recipes/<%=Recipe._id%>?_method=PUT" method="POST">
+             <input class="input" type="text" name="title" value="<%=Recipe.title%>"/><br>
+             <h5>Ingrediants</h5>
+             <input class="input wideInput" type="text" name="ingrediants" value="<%=Recipe.ingrediants%>"/>
+              <h5>Instructions: Please add more steps if needed (ex: Step #:)</h5>
+             <textarea class="input" name="instructions" rows="8" cols="80" value="<%=Recipe.instructions%>">
+          <% for (let i = 0; i < Recipe.instructions.length; i++) { %>
+  Step <%=i + 1%>: <%= Recipe.instructions[i] %>
+          <% } %>
+             </textarea><br>
+             <input class="input" type="text" name="imgUrl" value="<%=Recipe.imgUrl%>"/>
+
+             <button class="go" type="submit">Update Recipe</button>
+           </form>
+          </div>
         </div>
        <% } %>
 
@@ -64,18 +68,22 @@ Step <%=i + 1%>: <%= Recipe.instructions[i] %>
 
 
       <h4 class="headlineMedium">Your Recipes</h4>
-      <button class="addAButton" type="button" name="button">Add a Recipe</button>
+      <button id="addRecButton" class="addAButton" type="button" name="button">Add a Recipe</button>
       <hr class="line">
       <div class="flexRW">
         <% for (let Recipe of recipes) { %>
           <div class="recipeBox">
-            <a href="/recipes/<%= Recipe._id %>"><%= Recipe.title %></a>
-             <img src="<%= Recipe.imgUrl %>" alt="<%= Recipe.title %>"><br>
+            <a href="/recipes/<%= Recipe._id %>"><%= Recipe.title %></a><br>
+            <div class="imageBox">
+              <img src="<%= Recipe.imgUrl %>" alt="<%= Recipe.title %>"><br>
+            </div>
 
-             <button class="edit" type="button" ><a href="/recipes/<%= Recipe._id %>/edit">Edit</a></button>
-             <form class="deleteForm" action="/recipes/<%= Recipe._id %>?_method=DELETE" method="POST">
-               <input class="removeRec" type="submit" value="Remove">
-             </form>
+            <div class="buttonBox">
+              <button class="edit" type="button" ><a href="/recipes/<%= Recipe._id %>/edit">Edit</a></button>
+              <form class="deleteForm" action="/recipes/<%= Recipe._id %>?_method=DELETE" method="POST">
+              <input class="removeRec" type="submit" value="Remove">
+              </form>
+            </div>
           </div>
          <% } %>
       </div>
