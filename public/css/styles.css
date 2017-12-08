@@ -236,7 +236,7 @@ header a:hover {
 .flexRCW {
   max-height: 500px;
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: center;
   flex-wrap: wrap;
   overflow-y: scroll;
