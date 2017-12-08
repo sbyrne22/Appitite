@@ -8,11 +8,11 @@ input {
 -moz-appearance: none;
 appearance: none;
 }
-.input {
+/*.input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
+}*/
 .material-icons {
   margin: 0 !important;
 }
