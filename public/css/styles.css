@@ -3,13 +3,15 @@
 * {
   font-family: 'Maven Pro', sans-serif;
 }
-input textarea {
+input {
 -webkit-appearance: none;
 -moz-appearance: none;
 appearance: none;
 }
-textarea {
-  -webkit-max-width: 480px;
+.input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .material-icons {
   margin: 0 !important;
