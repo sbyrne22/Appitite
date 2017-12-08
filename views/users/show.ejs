@@ -50,7 +50,7 @@
           <div class="recDataForm">
             <div class="flexRSB">
               <h1 class="h1IBlock">Edit <%=Recipe.title%></h1><br>
-              <button id="closeEditRecBut<%= i %>" class="neverMind">Nevermind</button>
+              <button id="closeEditRecBut<%= i %>" class="neverMind"><a href='/profile/<%= oneUser[0]._id %>'>Nevermind!</a></button>
             </div>
            <form action="/recipes/<%=Recipe._id%>?_method=PUT" method="POST">
              <input class="input" type="text" name="title" maxlength="15" value="<%=Recipe.title%>"/><br>
