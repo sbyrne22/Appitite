@@ -3,6 +3,11 @@
 * {
   font-family: 'Maven Pro', sans-serif;
 }
+input textarea {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+}
 .material-icons {
   margin: 0 !important;
 }
@@ -134,6 +139,7 @@ header a:hover {
   background: #D24444;
   color: #FFFFFF;
   cursor: pointer;
+  -webkit-appearance: none;
 }
 .go {
   border:0px ;
