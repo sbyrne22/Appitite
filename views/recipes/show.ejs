@@ -5,24 +5,40 @@
     <title></title>
   </head>
   <body>
+
     <header>
       <% include ../partials/header.ejs %>
     </header>
 
-    <a href="/recipes">Back to Recipes</a>
-    Recipe Show
-    
-    <ul>
-      <li><%= oneRecipe.title %></li>
-      Instructions
-      <% for (let recipe of recipeInst) { %>
-        <li><%= recipe %></li>
-      <% } %>
+    <div class="container">
 
-      <li><img src="<%= oneRecipe.imgUrl %>" alt="Recipe Image"></li>
-      <li><%= oneRecipe.categories %></li>
-    </ul>
+      <div class="title">
+        <h3><%= oneRecipe.title %></h3>
+        <hr class="line"><br>
+      </div>
 
+      <div class="recShowFlexBox">
+        <div class="bigImgBox curveTopLeft">
+          <img class="recProfileImg" src="<%= oneRecipe.imgUrl %>" alt="Recipe Image">
+        </div>
+        <div class="contentBox curveTopRight backgrounPink">
+          <h4>Description</h4><br>
+          <%= oneRecipe.description %>
+        </div>
+        <div class="contentBox curveBottomLeft backgrounBlue">
+          <h4>Ingredients</h4><br>
+          <% for (let ingredient of recipeIng) { %>
+            <%= ingredient %><br><br>
+          <% } %>
+        </div>
+        <div class="contentBox curveBottomRight backgroundGreen">
+          <h4>Instructions</h4><br>
+          <% for (let instruction of recipeInst) { %>
+            <%= instruction %><br><br>
+          <% } %>
+        </div>
+      </div>
 
+    </div>
   </body>
 </html>

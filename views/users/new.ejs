@@ -15,24 +15,28 @@
           <% if (message) { %>
             <%= message %>
           <% } %>
-          <form action="/session/login" method="post">
-            Username: <input class="input2" name="username" /> <br />
-            Password: <input class="input2" name="password" /><br />
-            <button class="go" type="submit">Login</button>
-          </form>
+          <div class="loginFormBox">
+            <form action="/session/login" method="post">
+              Username: <input class="input2" name="username" /> <br />
+              Password: <input class="input2 input2Margin" type="password" name="password" />
+              <button class="go" type="submit">Login</button>
+            </form>
+          </div>
           <br>
-          <button id="newUserBtn" class="newUserBtn">New User? Register</button>
+          <button id="newUserBtn" class="newUserBtn">New User? Sign Up</button>
         </div>
         <div id="registerBox" class="registerBox">
-          <h2>Register</h2>
+          <h2>Sign Up</h2>
           <% if (regmessage) { %>
             <%= regmessage %>
           <% } %>
-          <form action="/session/register" method="post">
-            Username: <input class="input2" name="username" /> <br />
-            Password: <input class="input2" name="password" /><br />
-            <button class="go" type="submit">Register</button>
-          </form>
+          <div class="loginFormBox">
+            <form action="/session/register" method="post">
+              Username: <input class="input2" name="username" /> <br />
+              Password: <input class="input2 input2Margin" type="password" name="password" />
+              <button class="go" type="submit">Sign Up</button>
+            </form>
+          </div>
           <br>
           <button id="existUserBtn" class="existingUserBtn">Existing User? Login</button>
         </div>

@@ -54,3 +54,7 @@ const $existUserBtn = $('#existUserBtn');
 // <a href='/profile/<%= oneUser[0]._id %>'>Nevermind!</a>
 // <a href="/recipes/<%= recipes[i]._id %>/edit">Edit</a>
 // <% for (let i = 0; i < recipes.length; i++) { %>
+
+// <% for (let j = 0; j < instuctArray[i].length; j++) { %>
+// <%= instuctArray[i][j] %>
+// <% } %>

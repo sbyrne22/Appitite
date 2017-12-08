@@ -40,6 +40,7 @@ router.get('/:id', async (req, res) => {
   const username = req.session.username;
   const oneRecipe = await Recipe.findById(req.params.id);
   const recipeInst = oneRecipe.instructions.split('\n');
+  const recipeIng = oneRecipe.ingrediants.split(',');
 
   // const recipeInst = oneRecipe.instructions.split('Step');
   // oneRecipe.instructions.split('Step').shift();
@@ -47,7 +48,7 @@ router.get('/:id', async (req, res) => {
   console.log('RecipeInst', recipeInst);
   // const user = await Comment.find({ photo: onePhoto._id });
 
-  res.render('recipes/show.ejs', {oneRecipe, recipeInst, username, oneUser});
+  res.render('recipes/show.ejs', {oneRecipe, recipeInst, username, oneUser, recipeIng});
 });
 
 
