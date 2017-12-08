@@ -76,8 +76,8 @@ header a:hover {
   margin-left: 8px;
   /*border: 1px solid red;*/
   /*left: 500;*/
-  max-width: 500px;
-  text-align: right;
+  /*max-width: 500px;
+  text-align: right;*/
 }
 .myButton a {
   color: #DF6A6A;
@@ -242,7 +242,7 @@ header a:hover {
 .flexRSB2 {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-end;
 }
 /*.flexRSB3 {
@@ -266,11 +266,14 @@ header a:hover {
 .flexRCW {
   max-height: 500px;
   /*border: 1px solid red;*/
+  /*border-radius: 10px 0 0 10px;*/
+  /*background: #DEDEDE;*/
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   overflow-y: scroll;
+  align-items: flex-start;
 }
 .recipeBox {
   text-align: center;
