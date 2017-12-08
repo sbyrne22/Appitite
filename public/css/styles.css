@@ -8,6 +8,9 @@ input textarea {
 -moz-appearance: none;
 appearance: none;
 }
+textarea {
+  -webkit-max-width: 480px;
+}
 .material-icons {
   margin: 0 !important;
 }
