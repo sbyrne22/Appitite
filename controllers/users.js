@@ -9,10 +9,10 @@ const Recipe = require('../models/recipes.js');
 // router.get('/', (req, res) => res.redirect('/session'));
 
 // View all Users (users/index.ejs)
-router.get('/viewallusers', async (req, res) => {
-  const allUsers = await User.find();
-  res.render('users/index.ejs', {allUsers});
-});
+// router.get('/viewallusers', async (req, res) => {
+//   const allUsers = await User.find();
+//   res.render('users/index.ejs', {allUsers});
+// });
 
 // show route
 router.get('/:id', async (req, res) => {
